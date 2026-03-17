@@ -35,10 +35,26 @@ espadan-dtf-studio/
 └── style.py                # Centralized CSS stylesheets and color themes
 
 ```
-## 🚀 Getting Started
+## 🚀 Download & Run (Standalone .exe)
 
-### Prerequisites
-Make sure you have Python installed, then install the required dependencies:
+The easiest way to use **Espadan DTF Studio** is to download the pre-compiled Windows executable. You do not need to install Python or any coding dependencies!
+
+1. Go to the [Releases](https://github.com/imanshirani/Espadan-DTF-Studio/releases) page.
+2. Download `ESPADAN-DTF-STUDIO.exe`.
+3. Double-click the file to launch the studio and start halftoning.
+
+---
+
+### 🛡️ A Note on Antivirus & Windows Defender
+
+Because this application is a newly compiled standalone tool (built with PyInstaller) and is not digitally signed with an expensive commercial certificate, **Windows SmartScreen** or your **Antivirus software** might flag it as an "unrecognized app" or show a false positive warning.
+
+**This is completely normal for indie, open-source software.**
+
+* **To run the app:** On the blue Windows SmartScreen popup, click **"More info"** and then **"Run anyway"**.
+* **Security First:** Transparency is a priority. If you have any security concerns, you are highly encouraged to:
+    1. Scan the `.exe` file on [VirusTotal](https://www.virustotal.com/) before running it.
+    2. Or, inspect the completely open-source Python code in this repository and build the executable yourself using the developer instructions below.
 
 
 🕹️ How to Use
