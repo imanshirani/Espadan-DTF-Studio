@@ -33,3 +33,22 @@ espadan-dtf-studio/
 ├── halftone_ui.py          # PyQt6 User Interface and Interactive Zoom View
 ├── halftone_library.py     # Mathematical definitions for pattern shapes
 └── style.py                # Centralized CSS stylesheets and color themes
+
+```
+## 🚀 Getting Started
+
+### Prerequisites
+Make sure you have Python installed, then install the required dependencies:
+
+
+🕹️ How to Use
+Load Main Image: Import your high-resolution PNG or JPG design.
+
+Tweak DTF Settings: Enable Halftone Alpha Channel for soft edges, or use Knockout Black with the tolerance slider for dark apparel.
+
+Adjust the Grid: Select your desired shape, Pattern Size (LPI equivalent), and Angle. Use the mouse wheel on the preview window to zoom in and check for clean edges.
+
+Export: Click Export PNG to generate a RIP-ready file with preserved transparencies.
+
+👨‍💻 Developed By
+Iman Shirani | Espadan LLC Designed for creators, print shops, and the DTF community.
