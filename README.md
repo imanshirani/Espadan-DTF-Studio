@@ -8,6 +8,9 @@ Developed by: Iman Shirani
 
 A professional, standalone Halftone Generator meticulously designed for **Direct-to-Film (DTF)** and Screen Printing pipelines. Built with a modular architecture in Python, this tool bridges the gap between raw designs and RIP software by providing advanced rasterization, soft black knockouts, and custom halftone shapes without the need for expensive commercial plugins.
 
+![screenshot](/Screenshot/ESPADAN-DTF-STUDIO.png)
+![screenshot](/Screenshot/ESPADAN-DTF-STUDIO%20(3).png)
+
 ---
 
 ## ✨ Key Features
