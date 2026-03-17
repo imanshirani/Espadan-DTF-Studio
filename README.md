@@ -11,7 +11,7 @@ A professional, standalone Halftone Generator meticulously designed for **Direct
 ![screenshot](/Screenshot/ESPADAN-DTF-STUDIO.png)
 ![screenshot](/Screenshot/ESPADAN-DTF-STUDIO%20(3).png)
 
-🎥 **[Watch the Full Tutorial on YouTube](https://www.youtube.com/watch?v=J3S0TXRmVB8)**
+
 
 ---
 
@@ -63,6 +63,9 @@ Because this application is a newly compiled standalone tool (built with PyInsta
 
 
 🕹️ How to Use
+
+🎥 **[Watch the Full Tutorial on YouTube](https://www.youtube.com/watch?v=J3S0TXRmVB8)**
+
 Load Main Image: Import your high-resolution PNG or JPG design.
 
 Tweak DTF Settings: Enable Halftone Alpha Channel for soft edges, or use Knockout Black with the tolerance slider for dark apparel.
