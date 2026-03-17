@@ -11,6 +11,8 @@ A professional, standalone Halftone Generator meticulously designed for **Direct
 ![screenshot](/Screenshot/ESPADAN-DTF-STUDIO.png)
 ![screenshot](/Screenshot/ESPADAN-DTF-STUDIO%20(3).png)
 
+🎥 **[Watch the Full Tutorial on YouTube](https://www.youtube.com/watch?v=J3S0TXRmVB8)**
+
 ---
 
 ## ✨ Key Features
