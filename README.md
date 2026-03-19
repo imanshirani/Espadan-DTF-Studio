@@ -1,10 +1,10 @@
 # 🖨️ Espadan DTF Studio - Pro Edition
 Developed by: Iman Shirani
 
-[![Donate ❤️](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/donate/?hosted_button_id=LAMNRY6DDWDC4)
-![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
-![PyQt6](https://img.shields.io/badge/GUI-PyQt6-green.svg)
-![License](https://img.shields.io/badge/License-MIT-purple.svg)
+[![Donate ❤️](https://img.shields.io/badge/Donate-PayPal-00457C?style=flat-square&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=LAMNRY6DDWDC4)
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white)
+![PyQt6](https://img.shields.io/badge/GUI-PyQt6-41CD52?style=flat-square&logo=qt&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-purple?style=flat-square)
 
 A professional, standalone Halftone Generator meticulously designed for **Direct-to-Film (DTF)** and Screen Printing pipelines. Built with a modular architecture in Python, this tool bridges the gap between raw designs and RIP software by providing advanced rasterization, soft black knockouts, and custom halftone shapes without the need for expensive commercial plugins.
 
