@@ -24,4 +24,4 @@ class PatternLibrary:
     @staticmethod
     def diamond(x, y):
         
-        return (np.abs(np.sin(x)) + np.abs(np.cos(y))) / 2.0
+        return np.abs(np.sin(x)) + np.abs(np.cos(y)) - 1.0
