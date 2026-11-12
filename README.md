@@ -8,9 +8,9 @@ Developed by: Iman Shirani
 
 A professional, standalone Halftone Generator meticulously designed for **Direct-to-Film (DTF)** and Screen Printing pipelines. Built with a modular architecture in Python, this tool bridges the gap between raw designs and RIP software by providing advanced rasterization, soft black knockouts, and custom halftone shapes without the need for expensive commercial plugins.
 
-**Latest version: 0.005** — the original workflow is now extended with white knockout, selective print gaps, glow and detail protection, physical print sizing, and reusable presets.
+**Latest version: 0.006** — includes corrected Dot, Square, and Diamond shapes and a Centimeters / Inches selector for physical print size, alongside white knockout, selective print gaps, glow and detail protection, and reusable presets.
 
-See [CHANGELOG.md](CHANGELOG.md) for the complete changes **from 0.001 to 0.005**.
+See [CHANGELOG.md](CHANGELOG.md) for the complete changes **from 0.001 to 0.006**.
 
 ![screenshot](/Screenshot/ESPADAN-DTF-STUDIO.png)
 ![screenshot](/Screenshot/ESPADAN-DTF-STUDIO%20(3).png)
@@ -42,6 +42,8 @@ See [CHANGELOG.md](CHANGELOG.md) for the complete changes **from 0.001 to 0.005*
 * **⚡ Background Rendering:** Cached input images, debounced setting changes, and strip-based processing keep the interface responsive. Outdated renders are interrupted, and export waits for the latest result.
 
 **🔧 Fixes included in 0.005:** Grayscale output preserves transparency and knockout; the diamond pattern no longer disappears at some alpha levels; replacement custom masks refresh correctly; DPI and existing embedded color-profile metadata are preserved during export; missing masks and file errors are handled explicitly.
+
+**🆕 Version 0.006:** Dot uses circular contours, Square uses square contours, and Diamond uses diamond contours at a consistent cell size. Under **Advanced settings → Print size**, select **Centimeters (cm)** or **Inches (in)**. Switching units keeps the physical print size unchanged, and presets remember the chosen unit.
 
 ---
 
@@ -89,10 +91,12 @@ To run the tests or build the current executable:
 
 ```powershell
 .\dtf_env\Scripts\python.exe -B -m unittest discover -s tests -v
-.\build.ps1 -Version 0.005
+.\build.ps1 -Version 0.006
 ```
 
 The processing base passed 19 tests. The 0.005 title, About-button visibility, and GitHub/PayPal labels and URLs were checked separately.
+
+Version 0.006 passed 24 tests, including pattern geometry, inch conversion, unchanged output dimensions when switching units, and compatibility with older presets.
 
 ## 🚀 Download & Run (Standalone .exe)
 
@@ -103,6 +107,8 @@ The easiest way to use **Espadan DTF Studio** is to download the pre-compiled Wi
 3. Double-click the file to launch the studio and start halftoning.
 
 **Version 0.005 executable:** The local build is available at `OUTPUT/build/ESPADAN-DTF-STUDIO-V0.005.exe`. When the corresponding release is published, choose its versioned executable from the Releases page. Earlier executable builds are retained separately.
+
+**Version 0.006 executable:** The latest local build is `OUTPUT/build/ESPADAN-DTF-STUDIO-V0.006.exe`, including the corrected patterns and inch print sizing.
 
 ---
 

@@ -10,7 +10,7 @@ DEFAULTS = dict(ink_reduction=0, reduction_target='all', knockout_black=False,
                 detail_width_mm=.35, tone_enabled=False, shadow_reduction=50,
                 midtone_reduction=30, light_reduction=15, pattern_size=30, angle=22,
                 shape_name='dot', alpha_halftone=True, antialias=True,
-                print_size_enabled=False, print_width_cm=30., output_dpi=300,
+                print_size_enabled=False, print_width_cm=30., print_unit='cm', output_dpi=300,
                 lpi_enabled=False, lpi=30., background='transparent', custom_mask_path=None)
 
 BUILTINS = {
@@ -29,6 +29,7 @@ RANGES = dict(ink_reduction=(0, 100), black_tolerance=(0, 100), white_tolerance=
               light_reduction=(0, 100), pattern_size=(5, 100), angle=(0, 90),
               print_width_cm=(.1, 200), output_dpi=(72, 1200), lpi=(5, 120))
 CHOICES = dict(reduction_target=('all', 'black', 'white', 'both'),
+               print_unit=('cm', 'in'),
                shape_name=('dot', 'line', 'square', 'cross', 'diamond', 'custom'),
                background=('#000000', '#ffffff', 'transparent'))
 

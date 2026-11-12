@@ -1,5 +1,15 @@
 # Changelog — Espadan DTF Studio Pro Edition
 
+## 0.006 — Changes since 0.005
+
+Recorded: **2026-11-12**
+
+- Corrected Dot, Square, and Diamond screening to use circular, square, and diamond contours with a shared cell size and comparable coverage. The previous trigonometric patterns could look alike or distort the selected shape.
+- Added a simple Centimeters / Inches selector under Advanced settings → Print size. Switching units preserves physical dimensions and output pixels; width and height summaries use the selected unit.
+- Presets retain the selected display unit and canonical centimeter width. Older presets continue to load with centimeters selected.
+- Added regression checks for shape outlines, rotation, smoothing, coverage, strip repetition, inch conversion, and preset compatibility.
+- Validation: all 24 tests passed; the inch selector and dimension summary were visually reviewed. The 0.006 executable was built successfully using `build.ps1`, with intermediates in `.artifacts/pyinstaller-v0.006` and the release in `OUTPUT/build`.
+
 ## 0.005 — Changes since 0.001
 
 Recorded: **2026-11-01**

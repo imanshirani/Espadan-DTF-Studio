@@ -49,7 +49,7 @@ class HalftoneApp:
         self.ui.btn_load_mask.clicked.connect(self.load_mask)
         self.ui.btn_save.clicked.connect(self.save_image)
         for key, widget in self.ui.config_widgets.items():
-            if key == 'background':
+            if key in ('background', 'print_unit'):
                 continue
             if isinstance(widget, QCheckBox):
                 widget.stateChanged.connect(self.on_settings_changed)
@@ -58,6 +58,7 @@ class HalftoneApp:
             else:
                 widget.valueChanged.connect(self.on_settings_changed)
         self.ui.combo_garment.currentIndexChanged.connect(self.on_garment_changed)
+        self.ui.combo_print_unit.currentIndexChanged.connect(lambda _: self.update_controls())
         self.ui.combo_preset.currentIndexChanged.connect(self.select_preset)
         self.ui.btn_save_preset.clicked.connect(self.save_preset)
         self.ui.btn_load_preset.clicked.connect(self.load_preset)
@@ -77,6 +78,7 @@ class HalftoneApp:
             else:
                 values[key] = widget.value()
         values['custom_mask_path'] = self.custom_mask_path
+        values['print_width_cm'] = self.ui.print_width_cm
         return values
 
     def apply_config(self, config):
@@ -88,6 +90,8 @@ class HalftoneApp:
         self.applying_preset = True
         try:
             for key, widget in self.ui.config_widgets.items():
+                if key in ('print_width_cm', 'print_unit'):
+                    continue
                 widget.blockSignals(True)
                 try:
                     if isinstance(widget, QCheckBox):
@@ -99,6 +103,7 @@ class HalftoneApp:
                         widget.setValue(values[key])
                 finally:
                     widget.blockSignals(False)
+            self.ui.set_print_dimensions(values['print_width_cm'], values['print_unit'])
             self.custom_mask_path = mask
             self.ui.lbl_mask_status.setText('Custom mask loaded.' if mask else 'No custom mask loaded.')
             self.on_garment_changed()
@@ -239,10 +244,12 @@ class HalftoneApp:
         self.ui.spin_lpi.setEnabled(self.ui.chk_lpi.isChecked())
         if self.source_image is not None:
             if self.ui.chk_print_size.isChecked():
-                width = self.ui.spin_width.value()
+                width_cm = self.ui.print_width_cm
+                unit = self.ui.combo_print_unit.currentData()
+                width = width_cm / (2.54 if unit == 'in' else 1)
                 height = width * self.source_image.height / self.source_image.width
-                pixels = round(width / 2.54 * self.ui.spin_dpi.value())
-                self.ui.lbl_print_size.setText(f'{width:.2f} × {height:.2f} cm · {pixels} px wide\nAspect ratio locked.')
+                pixels = round(width_cm / 2.54 * self.ui.spin_dpi.value())
+                self.ui.lbl_print_size.setText(f'{width:.2f} × {height:.2f} {unit} · {pixels} px wide\nAspect ratio locked.')
             else:
                 self.ui.lbl_print_size.setText(f'Original pixels: {self.source_image.width} × {self.source_image.height}. Aspect ratio locked.')
 

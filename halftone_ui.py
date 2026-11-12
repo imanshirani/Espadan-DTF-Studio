@@ -10,7 +10,7 @@ from PIL import Image
 from presets import DEFAULTS, BUILTINS
 import style
 
-VERSION = '0.005'
+VERSION = '0.006'
 
 
 class StudioCheckBox(QCheckBox):
@@ -375,7 +375,18 @@ class HalftoneUI(QWidget):
         printing = QWidget()
         layout = QVBoxLayout(printing)
         self.chk_print_size = self.check('print_size_enabled', 'Set physical print size', layout)
+        unit_row = QHBoxLayout()
+        unit_row.addWidget(QLabel('Unit'))
+        self.combo_print_unit = self.register('print_unit', StudioComboBox())
+        self.combo_print_unit.addItem('Centimeters (cm)', 'cm')
+        self.combo_print_unit.addItem('Inches (in)', 'in')
+        unit_row.addWidget(self.combo_print_unit)
+        layout.addLayout(unit_row)
         self.spin_width = self.spin('print_width_cm', 'Width', .1, 200, layout, ' cm', 2)
+        self.print_width_cm = DEFAULTS['print_width_cm']
+        self.spin_width.valueChanged.connect(self.print_width_changed)
+        self.combo_print_unit.currentIndexChanged.connect(
+            lambda _: self.set_print_dimensions(self.print_width_cm, self.combo_print_unit.currentData()))
         self.spin_dpi = self.spin('output_dpi', 'Output resolution', 72, 1200, layout, ' DPI')
         self.lbl_print_size = self.note('Aspect ratio stays locked to the original design.')
         layout.addWidget(self.lbl_print_size)
@@ -398,6 +409,28 @@ class HalftoneUI(QWidget):
         self.slider_details, _ = self.slider('detail_strength', 'Detail protection', layout)
         self.spin_detail_width = self.spin('detail_width_mm', 'Fine stroke width', .1, 2, layout, ' mm', 2)
         self.advanced_panel.addTab(tones, 'Protection')
+
+    def print_width_changed(self, value):
+        factor = 2.54 if self.combo_print_unit.currentData() == 'in' else 1
+        self.print_width_cm = min(200, max(.1, value * factor))
+
+    def set_print_dimensions(self, width_cm, unit):
+        # Retain canonical centimeters so repeated unit switches cannot round
+        # the physical size or change export pixels. Presets also store cm.
+        self.print_width_cm = width_cm
+        self.combo_print_unit.blockSignals(True)
+        self.spin_width.blockSignals(True)
+        try:
+            self.combo_print_unit.setCurrentIndex(self.combo_print_unit.findData(unit))
+            factor = 2.54 if unit == 'in' else 1
+            self.spin_width.setDecimals(4 if unit == 'in' else 2)
+            self.spin_width.setRange(.1 / factor, 200 / factor)
+            self.spin_width.setSingleStep(.1)
+            self.spin_width.setSuffix(' ' + unit)
+            self.spin_width.setValue(width_cm / factor)
+        finally:
+            self.spin_width.blockSignals(False)
+            self.combo_print_unit.blockSignals(False)
 
     def toggle_advanced(self, checked):
         self.advanced_panel.setVisible(checked)
